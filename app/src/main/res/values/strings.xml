@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NEXUS</string>
+    <string name="app_tagline">Continuity &amp; Discovery Navigator</string>
+    <string name="onboarding_welcome">Welcome, Explorer</string>
+    <string name="pathfinder_title">Pathfinder Engine</string>
+    <string name="quiz_hub_title">Quiz Hub</string>
+    <string name="reading_order_essential">Essential Path</string>
+    <string name="reading_order_full">Full Experience</string>
+</resources>

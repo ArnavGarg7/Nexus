@@ -1,0 +1,261 @@
+
+NEXUS
+Continuity & Discovery Navigator
+
+
+Product Requirement Document (PRD)
+Version 1.0  ·  MVP Release Candidate
+
+
+1. Executive Summary
+NEXUS is a Continuity & Discovery Navigator designed to solve one of the most persistent pain points in pop-culture fandom: Continuity Fatigue. As comic book universes have expanded across eight-plus decades, thousands of individual issues, major crossover events, reboots, and a growing stack of movies, TV shows, and video games, the barrier to entry for new or returning fans has never been higher.
+
+1.1  The Problem — Continuity Fatigue
+A new fan who watches Avengers: Endgame and wants to explore the comics is immediately confronted with 60+ years of Marvel continuity, dozens of conflicting reading-order guides scattered across Reddit and YouTube, and no single authoritative platform that bridges film, comics, and games in one place. The same challenge exists across DC, Image, Dark Horse, and every other publisher.
+
+Current workarounds are fragmented and inefficient:
+Google searches yield inconsistent results across fan wikis, Reddit threads, and YouTube explainers of varying quality.
+Publisher websites (Marvel Unlimited, DC Universe Infinite) focus on catalogue access, not guided discovery.
+YouTube guides help one-time onboarding but provide no interactive, personalised path.
+Comic store staff are knowledgeable but unavailable at 11 PM when a fan just finished a series finale.
+
+1.2  The Solution — NEXUS as a Pathfinder Platform
+NEXUS acts as a guided entry system into complex fictional universes. It is not a digital comics reader and not a wiki. It is a smart navigation layer that sits on top of the entire comic-book and pop-culture ecosystem and answers three core questions for every fan:
+Where do I start?
+What should I read, watch, or play next?
+How does this story connect to everything else?
+
+
+The product covers multiple publishers and franchises simultaneously — Marvel, DC, Image Comics, Invincible, The Boys, Dark Horse, and cross-media adaptations — making it the first genuinely cross-publisher discovery platform in the space.
+
+2. Problem Statement
+2.1  Root Causes of Continuity Fatigue
+The comic book industry's volume of output is staggering. Marvel alone has published over 40,000 unique comic issues. DC has rebooted its continuity multiple times (Crisis on Infinite Earths, Flashpoint, The New 52, Rebirth, Dawn of DC). This creates five distinct structural problems:
+
+
+2.2  Why Existing Platforms Fall Short
+No existing platform adequately addresses the discovery and continuity navigation problem:
+Marvel Unlimited & DC Universe Infinite — Digital reading services with search and browse, but no curated reading paths or cross-media bridges.
+Comic Vine / Grand Comics Database — Comprehensive databases but built for cataloguing, not guided discovery.
+Goodreads / StoryGraph — Book-oriented, poor comic metadata, no event or continuity awareness.
+Reddit (r/comicbooks, r/Marvel, r/DCcomics) — Community advice is high quality but unsearchable, unstructured, and inconsistent.
+YouTube Channels — Excellent one-way content but not interactive; cannot adapt to a user's specific interests and history.
+
+
+3. Target Audience & User Personas
+NEXUS targets four primary user personas. Each has distinct motivations, frustrations, and usage patterns that must be addressed in the product's core feature set.
+
+Persona 1 — The MCU-to-Comics Newbie
+
+Persona 2 — The Completionist
+
+Persona 3 — The Lore Hunter
+
+Persona 4 — The Casual Fan
+
+4. Core Product Features (Functional Requirements)
+4.1  The Pathfinder Engine
+The Pathfinder Engine is the central recommendation system of NEXUS. It is the first feature a user encounters after onboarding. Its purpose is to reduce decision paralysis by converting complex continuity into a personalised starting point.
+
+How it works:
+The user completes a short preference quiz (5–7 questions) during onboarding.
+The engine maps responses to a set of content tags and generates a curated entry point.
+The user receives a named 'Path' with 6–12 recommended starting comics or media.
+As the user interacts, the engine refines recommendations using implicit feedback.
+
+Pre-built Entry Path Templates:
+
+4.2  Character Journey Navigator
+The Character Journey Navigator is the primary search experience. A user searches for any character across any publisher and receives a structured, progressive reading path tailored to their chosen depth level.
+
+Example: Batman Reading Path
+
+The navigator also surfaces character-specific metadata: first appearance, key creative teams, major deaths and resurrections, alternate versions, and connections to other characters.
+
+4.3  Dynamic Reading Orders
+For major story arcs and crossover events, NEXUS provides two reading order modes to serve both casual and completionist users.
+
+
+Users can switch between modes at any time. The Essential Path is the default view; the Full Experience is unlocked with a single tap. Each issue in the reading order is annotated with a brief importance rating and a one-sentence synopsis to help users make informed choices.
+
+4.4  Media Bridge — Cross-Media Recommendation System
+The Media Bridge is a bidirectional recommendation layer that connects comics to films, TV shows, and games, and vice versa. It is a key differentiator for NEXUS.
+
+Film-to-Comics Bridge (Example):
+
+Comics-to-Media Bridge (Example):
+
+4.5  Event Navigator
+The Event Navigator provides a structured view of major crossover events across all publishers. Each event is broken into three phases — Pre-Event Context, Core Event Issues, and Post-Event Consequences — giving users a clear narrative arc.
+
+Example: Secret Wars (2015) — Marvel
+
+4.6  Interactive Trivia & Lore Explorer
+The Lore Explorer surfaces curated facts, Easter eggs, writer insights, and hidden connections that reward deep engagement. Trivia cards appear inline within reading paths at relevant moments — for example, after recommending Batman: Year One, the app surfaces a card noting that David Mazzucchelli's art deliberately echoed Italian Neorealist film.
+
+Lore content types:
+Character Origins — How the character was created, what inspired the writers/artists.
+Real-World Influences — Literary, cinematic, and historical influences on storylines.
+Easter Eggs — Hidden references embedded in panels, dialogue, and cover art.
+Creative Team Insights — Writer and artist commentary on key runs.
+Retcon Tracker — Documents when and how continuity was changed and why.
+
+4.7  Character Discovery System
+The Character Discovery System recommends characters and titles that match the thematic profile of a character the user already enjoys. Recommendations are based on a multi-dimensional tag system covering tone, theme, setting, and storytelling style.
+
+Example: User likes Batman → NEXUS recommends:
+
+5. User Experience & User Flow
+5.1  Onboarding Flow
+The onboarding experience is designed to be completed in under two minutes and immediately delivers value — the user's first personalised reading path — before they explore any other feature.
+
+Onboarding Steps:
+Welcome Screen — NEXUS brand intro, value proposition in one sentence.
+Publisher Preference — 'Which universes interest you?' (Marvel / DC / Image / All / Indie).
+Mood Preference — 'What kind of stories do you enjoy?' (Dark & Gritty / Hopeful & Classic / Cosmic & Epic / Street Level / I'll explore).
+Entry Point — 'How did you discover comics?' (Movies/TV / Already a reader / Games / Fresh start).
+Character Spark (Optional) — 'Pick one character you already know.' (Grid of popular characters).
+Path Generated — Animated reveal of the user's first personalised Pathfinder result.
+
+5.2  Core Discovery Loop
+The core in-app experience follows a self-reinforcing discovery loop designed to maximise session depth and return visits:
+
+
+5.3  Primary User Journey — The MCU Newbie
+
+6. UI / UX Design Direction
+6.1  Design Philosophy
+NEXUS should feel as if the user is literally navigating inside a comic book universe. The interface is an immersive, stylised space — not a sterile database. Every visual and interaction should reinforce the feeling of being a fan, not a researcher.
+
+6.2  Core Visual Language
+Dark Mode Default — Deep navy (#1A1A2E) base with high-contrast accent red (#C0392B) and off-white type. Light mode available but secondary.
+Panel Layout — Content cards are styled as comic panels with subtle border outlines. Information is grouped in panel clusters, not generic list rows.
+Typography — Mix of a bold condensed display font for headings (evoking comic lettering) and clean sans-serif for body text (readability).
+Cover Art as Hero Imagery — Issue covers are displayed prominently, respecting the artistic identity of each comic.
+Halftone Texture — Subtle background halftone dot pattern referencing the printing technique of classic comics.
+
+6.3  Interaction Design Ideas
+Speech Bubble Tooltips — Contextual tips and trivia appear as comic-style speech bubbles, not generic modal dialogs.
+Panel Swipe Transitions — Navigating between sections uses a horizontal panel-flip animation.
+Animated Reading Order Reveals — When a reading path is generated, issues appear sequentially with a brief animation, like turning a comic page.
+Character Portrait Cards — Characters are displayed as stylised portrait cards with publisher logo, first appearance year, and key tag chips.
+Progress Tracker — A visual timeline (styled as an issue run spine) shows how far through a reading path the user has progressed.
+
+6.4  Accessibility Requirements
+Minimum 4.5:1 contrast ratio on all text.
+Dynamic text sizing support.
+Screen reader (TalkBack) compatibility for all interactive elements.
+Reduced motion mode for users sensitive to animation.
+
+7. Technical Architecture
+7.1  Platform
+
+7.2  Backend Architecture
+
+7.3  Database Content Schema
+The content database stores deeply interconnected entities representing the comic-book knowledge graph:
+Issues — Title, issue number, series, publisher, release date, writer, artist, cover artist, story arc, tags, synopsis.
+Characters — Name, aliases, publisher, first appearance issue, creators, key story arcs, related characters, media appearances, tag profile.
+Story Arcs / Runs — Constituent issues, canonical order, crossover flags, publisher, era, tags.
+Events — Pre-event issues, core event issues, tie-in issues, post-event issues, affected characters, publisher, year.
+Media (Films / TV / Games) — Title, type, studio, release year, related comics, characters, tags.
+Relationships — A graph-layer join table connecting all entity types bidirectionally (character ↔ issue ↔ event ↔ media ↔ character).
+
+7.4  External API Integrations
+
+Data normalisation challenge: each external API uses different identifiers, naming conventions, and coverage. A normalisation pipeline must map external IDs to internal NEXUS entity IDs and handle conflicts, duplicates, and missing data gracefully.
+
+8. Recommendation Engine Strategy
+8.1  Tag-Based Similarity (MVP)
+For MVP, recommendations will be driven by a manually curated, multi-dimensional tag system. Each content entity (character, issue, arc, media) is tagged across six dimensions:
+
+
+8.2  Future Recommendation Approaches
+Post-MVP, the recommendation engine will evolve through two additional layers:
+Collaborative Filtering — Users with similar reading histories will inform recommendations for one another. 'Fans of Batman: Year One also loved Daredevil: Born Again.'
+Content Embedding (AI) — Natural language embeddings of comic synopses and character descriptions will enable semantic similarity matching beyond simple tag overlap.
+
+9. Scalability Considerations
+
+10. MVP Scope (Version 1.0)
+10.1  In Scope — MVP Features
+
+10.2  Out of Scope — Post-MVP
+AI-powered personalised recommendations (collaborative filtering / embeddings).
+Community features — user-created reading lists, fan theories, comments.
+Reading progress sync with Marvel Unlimited or ComiXology.
+iOS and Web platform versions.
+Podcast and audiobook cross-media recommendations.
+Full Dynamic Reading Orders (Full Experience mode) for all events.
+
+11. Fan Knowledge Quiz System
+The Fan Knowledge Quiz System transforms NEXUS from a passive discovery tool into an active fan participation platform. By allowing users to test and deepen their knowledge in a fun, gamified environment, the Quiz System significantly increases engagement, retention, and time-in-app — while reinforcing the core discovery loop.
+
+
+11.1  Purpose & Strategic Value
+The Quiz System addresses a specific engagement gap: users who have consumed a reading path or browsed lore have no immediate interactive outlet for that knowledge. The Quiz System fills this gap by:
+Increasing Session Depth — Users who complete a quiz engage 2–3x longer per session (benchmark from competitor trivia apps).
+Improving Retention — Gamification elements (streaks, badges, leaderboards) create daily return habits.
+Driving Discovery — Incorrect quiz answers reveal new content the user hasn't explored, creating a direct pipeline from quiz → reading path.
+Building Community Identity — Earned badges and fan-level titles give users a shareable identity within the NEXUS community.
+
+11.2  Quiz Categories
+
+11.3  Difficulty Levels
+
+11.4  Question Types
+To maintain engagement across multiple sessions, the Quiz System supports five distinct question formats:
+
+Multiple Choice — Four options, one correct. The standard format for accessibility and speed.
+Image-Based Questions — User identifies a character from a panel crop, a classic cover, or a still from a film adaptation. Sourced from NEXUS's existing cover art library.
+Timeline Ordering — User drags events or issues into chronological order. Tests deep continuity knowledge. Example: 'Order these events: Death of Superman / Knightfall / Zero Hour / Infinite Crisis.'
+Quote Identification — A speech bubble quote is presented; user identifies the character, writer, or issue. Example: 'I'm the best there is at what I do, but what I do isn't very nice.'
+Event Connections — A character or item is shown; user must identify which crossover event it originates from or which issue introduced it.
+
+11.5  Dynamic Quiz Generation
+The Quiz System is capable of generating quizzes dynamically from the NEXUS content database, enabling theoretically unlimited quiz variety without manual curation of every question set.
+
+Dynamic Generation Sources:
+Character Database — Questions auto-generated about first appearances, creators, aliases, powers, and key story beats.
+Issue Metadata — Questions generated from publication dates, writers, artists, and issue-level story beats.
+Event Data — Pre/post-event questions generated from the Event Navigator's structured data.
+Media Bridge Data — Cross-media trivia auto-generated from the connection graph between comics and films/shows.
+Lore Cards — Trivia facts already stored as Lore Cards can be repurposed directly as quiz questions.
+
+Dynamic generation is seeded with a quality-scoring layer: questions with ambiguous correct answers, poorly worded auto-generated phrasing, or very low difficulty discrimination are flagged for human editorial review before going live.
+
+11.6  Rewards & Gamification
+The gamification layer is designed to reward consistent engagement, breadth of knowledge, and improvement over time — not just correct answers.
+
+
+Example Achievement Badges:
+
+11.7  Integration with User Interests
+The Quiz System is deeply integrated with the user's existing NEXUS profile. Quizzes are not random — they are contextually surfaced based on what the user has already explored:
+If a user has completed a Batman reading path → The app surfaces a 'Batman: Year One to Court of Owls' quiz immediately after.
+If a user is browsing Civil War in the Event Navigator → A 'Civil War Tie-In Challenge' quiz is recommended inline.
+If a user has a Marvel character preference → Marvel Universe quizzes are prioritised in the Quiz dashboard.
+If a user has failed a quiz in a category → The app recommends the relevant reading path to address knowledge gaps.
+
+11.8  Quiz Data Tracking (Metrics)
+
+11.9  Quiz UI / UX Design
+The Quiz interface must feel like a fun fan experience — not a corporate exam. Every visual element reinforces the comic-book aesthetic:
+Comic Panel Question Layout — Each question is presented inside a stylised comic panel frame. The panel border style varies by difficulty level (clean lines for Casual Fan; rougher, inked lines for Lore Master).
+Speech Bubble Answer Options — Answer choices appear as speech bubbles from a character silhouette, making selection feel like a dialogue exchange.
+Animated Answer Reveals — Correct answers trigger a brief green burst animation; incorrect answers reveal the right answer with a supporting Lore Card snippet.
+Progress Bar as Issue Spine — A horizontal progress bar at the top of the quiz is styled as a comic book issue spine, filling from left to right.
+Result Screen as Comic Cover — The quiz result screen is rendered as a mock comic cover: 'NEXUS PRESENTS: Your Score — Bat-Family Expert #7.'
+Wrong-Answer Rabbit Hole — When a user answers incorrectly, the reveal screen offers a direct link to the relevant NEXUS reading path. Knowledge gap → discovery opportunity.
+
+12. Success Metrics (KPIs)
+12.1  Growth Metrics
+
+12.2  Engagement Metrics
+
+13. Future Expansion (Post-MVP Roadmap)
+
+14. Risks & Mitigations
+
+NEXUS — Continuity & Discovery Navigator
+Product Requirement Document v1.0  ·  Internal & Confidential  ·  March 2026
