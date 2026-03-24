@@ -114,8 +114,7 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.utils)
 
-    // ── Gemini AI ──
-    implementation(libs.generative.ai)
+    // ── Gemini AI (uses Ktor HTTP client directly) ──
 
     // ── Serialization (required by Supabase) ──
     implementation(libs.kotlinx.serialization.json)

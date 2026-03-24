@@ -24,8 +24,7 @@ espresso = "3.6.1"
 # Supabase
 supabaseKt = "3.4.1"
 ktor = "3.3.0"
-# Gemini AI
-generativeAi = "0.9.0"
+# Gemini AI (using Ktor directly, no SDK needed)
 kotlinxSerializationJson = "1.7.1"
 
 [libraries]
@@ -70,8 +69,7 @@ supabase-compose-auth-ui = { group = "io.github.jan-tennert.supabase", name = "c
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-utils = { group = "io.ktor", name = "ktor-utils", version.ref = "ktor" }
-# Gemini AI
-generative-ai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeAi" }
+# Gemini AI – uses Ktor HTTP client directly, no separate SDK
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 
 [plugins]

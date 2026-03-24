@@ -1,34 +1,69 @@
 package com.nexus.app.core.data.remote
 
-import com.google.ai.client.generativeai.GenerativeModel
-import com.google.ai.client.generativeai.type.generationConfig
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.nexus.app.BuildConfig
 import com.nexus.app.domain.model.*
+import io.ktor.client.*
+import io.ktor.client.engine.okhttp.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * AI Agent service that uses Google Gemini to dynamically generate
- * quizzes, lore cards, and reading paths on-the-fly.
+ * AI Agent service that uses Google Gemini REST API directly via Ktor 3.x.
+ * Avoids the deprecated generativeai SDK (which depends on Ktor 2.x).
  */
 @Singleton
 class GeminiService @Inject constructor() {
 
-    private val model = GenerativeModel(
-        modelName = "gemini-2.0-flash",
-        apiKey = BuildConfig.GEMINI_API_KEY,
-        generationConfig = generationConfig {
-            temperature = 0.8f
-            topK = 40
-            topP = 0.95f
-            maxOutputTokens = 4096
-        }
-    )
-
+    private val httpClient = HttpClient(OkHttp)
     private val gson = Gson()
+    private val apiKey = BuildConfig.GEMINI_API_KEY
+    private val apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+
+    /** Make a direct REST call to the Gemini API */
+    private suspend fun generate(prompt: String): String? {
+        return try {
+            val requestBody = gson.toJson(mapOf(
+                "contents" to listOf(mapOf(
+                    "parts" to listOf(mapOf("text" to prompt))
+                )),
+                "generationConfig" to mapOf(
+                    "temperature" to 0.8,
+                    "topK" to 40,
+                    "topP" to 0.95,
+                    "maxOutputTokens" to 4096
+                )
+            ))
+
+            val response = httpClient.post("$apiUrl?key=$apiKey") {
+                contentType(ContentType.Application.Json)
+                setBody(requestBody)
+            }
+
+            if (response.status.isSuccess()) {
+                val body = response.bodyAsText()
+                // Parse the Gemini REST response to extract the text
+                val parsed = gson.fromJson(body, Map::class.java) as? Map<*, *>
+                val candidates = parsed?.get("candidates") as? List<*>
+                val first = (candidates?.firstOrNull() as? Map<*, *>)
+                val content = first?.get("content") as? Map<*, *>
+                val parts = content?.get("parts") as? List<*>
+                val text = (parts?.firstOrNull() as? Map<*, *>)?.get("text") as? String
+                text
+            } else {
+                Timber.e("Gemini API error: ${response.status} - ${response.bodyAsText()}")
+                null
+            }
+        } catch (e: Exception) {
+            Timber.e(e, "Gemini API call failed")
+            null
+        }
+    }
 
     // ═══════════════════════════════════════════════════════════════
     // Quiz Generation
@@ -75,8 +110,8 @@ class GeminiService @Inject constructor() {
         """.trimIndent()
 
         return try {
-            val response = model.generateContent(prompt)
-            val json = extractJson(response.text ?: "")
+            val text = generate(prompt) ?: return null
+            val json = extractJson(text)
             gson.fromJson(json, Quiz::class.java)
         } catch (e: Exception) {
             Timber.e(e, "Failed to generate quiz for topic: $topic")
@@ -115,8 +150,8 @@ class GeminiService @Inject constructor() {
         """.trimIndent()
 
         return try {
-            val response = model.generateContent(prompt)
-            val json = extractJson(response.text ?: "")
+            val text = generate(prompt) ?: return emptyList()
+            val json = extractJson(text)
             val type = object : TypeToken<List<LoreCard>>() {}.type
             gson.fromJson(json, type)
         } catch (e: Exception) {
@@ -139,7 +174,8 @@ class GeminiService @Inject constructor() {
             Tags/preferences: $tagsStr
             ${if (userPreferences.isNotBlank()) "Additional context: $userPreferences" else ""}
             
-            Return ONLY valid JSON array (no markdown, no code blocks) in this exact format:
+            Return ONLY valid JSON array (no markdown, no code blocks). Each path should have 5-8 issues.
+            Use this exact format:
             [
               {
                 "id": "ai_path_1",
@@ -167,8 +203,8 @@ class GeminiService @Inject constructor() {
         """.trimIndent()
 
         return try {
-            val response = model.generateContent(prompt)
-            val json = extractJson(response.text ?: "")
+            val text = generate(prompt) ?: return emptyList()
+            val json = extractJson(text)
             val type = object : TypeToken<List<ReadingPath>>() {}.type
             gson.fromJson(json, type)
         } catch (e: Exception) {
@@ -223,8 +259,8 @@ class GeminiService @Inject constructor() {
         """.trimIndent()
 
         return try {
-            val response = model.generateContent(prompt)
-            val json = extractJson(response.text ?: "")
+            val text = generate(prompt) ?: return emptyList()
+            val json = extractJson(text)
             val type = object : TypeToken<List<Quiz>>() {}.type
             gson.fromJson(json, type)
         } catch (e: Exception) {
