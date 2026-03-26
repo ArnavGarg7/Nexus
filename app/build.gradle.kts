@@ -19,10 +19,8 @@ android {
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "MARVEL_API_KEY", "\"${project.findProperty("MARVEL_API_KEY") ?: ""}\"")
         buildConfigField("String", "COMIC_VINE_API_KEY", "\"${project.findProperty("COMIC_VINE_API_KEY") ?: ""}\"")
-        buildConfigField("String", "TMDB_API_KEY", "\"${project.findProperty("TMDB_API_KEY") ?: ""}\"")
-        buildConfigField("String", "BASE_URL", "\"https://api.nexusapp.dev/v1/\"")
+        buildConfigField("String", "SUPERHERO_API_TOKEN", "\"${project.findProperty("SUPERHERO_API_TOKEN") ?: ""}\"")
 
         // Supabase
         buildConfigField("String", "SUPABASE_URL", "\"https://aursyaajgesrkgrvxawm.supabase.co\"")
